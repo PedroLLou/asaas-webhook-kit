@@ -1,5 +1,7 @@
 # asaas-webhook-kit
 
+CI: [Node 22/24 on Linux and Windows](https://github.com/PedroLLou/asaas-webhook-kit/actions/workflows/ci.yml).
+
 A small, dependency-free toolkit for handling [Asaas](https://docs.asaas.com) payment webhooks safely: validate the envelope, normalize events into provider facts, keep a durable inbox, and apply events in a way that survives duplicates, crashes and out-of-order delivery. Your product's entitlement rules stay yours.
 
 **Status: 0.1.0, early source release on GitHub. Not published on npm (`private: true`).** Written from the observed behavior of one private billing integration. No other product consumes it yet, so treat the API as unproven.
