@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: node ${{ matrix.node }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node: [22, 24]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      # No dependencies and no lockfile, so there is nothing to install.
+      # `npm` resolves to npm.cmd on Windows runners in every shell.
+      - name: Tests
+        run: npm test
+      - name: Demo (synthetic, no network)
+        run: npm run demo
+      - name: Conformance
+        run: npm run conformance
+      - name: Pack dry run
+        run: npm run pack:dry

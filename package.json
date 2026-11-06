@@ -1,0 +1,57 @@
+{
+  "name": "asaas-webhook-kit",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Durable inbox, ordering and conformance checks for Asaas payment webhooks. No network, no framework, no runtime dependencies.",
+  "keywords": [
+    "asaas",
+    "webhook",
+    "idempotency",
+    "inbox",
+    "payments"
+  ],
+  "license": "MIT",
+  "author": "Pedro Lourenconi Lima",
+  "type": "module",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "bin": {
+    "asaas-webhook-kit": "bin/asaas-webhook-kit.mjs"
+  },
+  "exports": {
+    ".": {
+      "types": "./src/index.d.mts",
+      "default": "./src/index.mjs"
+    },
+    "./core": {
+      "types": "./src/core.d.mts",
+      "default": "./src/core.mjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "bin",
+    "src",
+    "README.md",
+    "README.pt-BR.md",
+    "LICENSE",
+    "PROVENANCE.md",
+    "SECURITY.md"
+  ],
+  "scripts": {
+    "test": "node --test",
+    "demo": "node bin/asaas-webhook-kit.mjs demo",
+    "conformance": "node bin/asaas-webhook-kit.mjs conformance",
+    "pack:dry": "npm pack --dry-run --ignore-scripts",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PedroLLou/asaas-webhook-kit.git"
+  },
+  "homepage": "https://github.com/PedroLLou/asaas-webhook-kit#readme",
+  "bugs": {
+    "url": "https://github.com/PedroLLou/asaas-webhook-kit/issues"
+  }
+}
